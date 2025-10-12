@@ -13,6 +13,7 @@
         android:theme="@style/Theme.Trabajo_practivo_inmobiliaria">
         <activity
             android:name=".login.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
