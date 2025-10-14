@@ -8,24 +8,67 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.trabajo_practivo_inmobiliaria.MainActivity;
 import com.example.trabajo_practivo_inmobiliaria.databinding.FragmentGalleryBinding;
+import com.example.trabajo_practivo_inmobiliaria.models.Propietario;
 
 public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
+    private GalleryViewModel mv;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
 
+        mv=new ViewModelProvider(this).get(GalleryViewModel.class);
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        mv.getmPropietario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+                binding.etApellido.setText(propietario.getApellido());
+                binding.etNombre.setText(propietario.getNombre());
+                binding.etDni.setText(propietario.getDni());
+                binding.etEmailPerfil.setText(propietario.getEmail());
+                binding.etTelefono.setText(propietario.getTelefono());
+            }
+        });
+        mv.getmEstado().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                binding.etDni.setEnabled(aBoolean);
+                binding.etEmailPerfil.setEnabled(aBoolean);
+                binding.etNombre.setEnabled(aBoolean);
+                binding.etApellido.setEnabled(aBoolean);
+                binding.etTelefono.setEnabled(aBoolean);
+            }
+        });
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        mv.getmPalabra().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.btnEditar.setText(s.toString());
+            }
+        });
+
+        mv.leerPropietario();
+
+        binding.btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre,apellido,dni,email,telefono;
+                nombre=binding.etNombre.getText().toString();
+                apellido=binding.etApellido.getText().toString();
+                dni=binding.etDni.getText().toString();
+                email=binding.etEmailPerfil.getText().toString();
+                telefono=binding.etTelefono.getText().toString();
+                mv.boton(binding.btnEditar.getText().toString(),nombre,apellido,dni,email,telefono);
+            }
+        });
+
         return root;
     }
 

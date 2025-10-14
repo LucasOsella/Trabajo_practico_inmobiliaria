@@ -6,17 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
 
-    <TextView
-        android:id="@+id/text_gallery"
+    <EditText
+        android:id="@+id/etNombre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Nombre"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDni"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <EditText
+        android:id="@+id/etApellido"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Apellidio"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombre"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <EditText
+        android:id="@+id/etDni"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Dni"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
+    <EditText
+        android:id="@+id/etEmail_Perfil"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Email"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etApellido"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mi Perfil"
+        app:layout_constraintBottom_toTopOf="@+id/etDni"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail_Perfil"
+        app:layout_constraintVertical_bias="0.662" />
+
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Telefono"
+        android:inputType="text"
+        android:editable="false"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail_Perfil"
+        app:layout_constraintVertical_bias="0.287" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
