@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment {
         vm.getMmap().observe(getViewLifecycleOwner(), new Observer<HomeViewModel.MapaActual>() {
             @Override
             public void onChanged(HomeViewModel.MapaActual mapaActual) {
+                //profe en esta linea no me acepta el FragmenteManager solo y me da un error, la solucion que enconte fue esta pero no se si es la correcta, recomendado por la ia WindSurf
                 SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
                 supportMapFragment.getMapAsync(mapaActual);
             }
