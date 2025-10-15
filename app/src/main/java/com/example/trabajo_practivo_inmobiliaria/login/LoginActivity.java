@@ -30,6 +30,7 @@ private ActivityLoginBinding binding;
                 String user=binding.etEmail.getText().toString();
                 String pass=binding.etContrasenia.getText().toString();
                 mv.login(user,pass);
+                binding.tvError.setText(mv.getMerror().getValue());
             }
         });
     }

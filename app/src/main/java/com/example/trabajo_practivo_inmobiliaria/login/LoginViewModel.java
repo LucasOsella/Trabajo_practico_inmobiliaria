@@ -4,7 +4,9 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 import android.app.Application;
 import android.content.Intent;
+import android.database.sqlite.SQLiteBlobTooBigException;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,11 +21,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginViewModel extends AndroidViewModel {
+    private MutableLiveData <String> mError = new MutableLiveData<>();
     public LoginViewModel(@NonNull Application application) {
         super(application);
     }
 
+    public LiveData<String> getMerror(){
+        return mError;
+    }
     public void login(String mail, String clave){
+        if(mail.isEmpty()||clave.isEmpty()){
+            mError.setValue("Debe completar todos los campos");
+            return;
+        }
         ApiClient.InmoServicio api= ApiClient.getApiInmobiliario();
         Call<String>Llamada=api.login(mail, clave);
         Llamada.enqueue(new Callback<String>() {
@@ -35,15 +45,17 @@ public class LoginViewModel extends AndroidViewModel {
                     Intent intent = new Intent(getApplication(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getApplication().startActivity(intent);
-                    Log.d("Salida", "Ingreso");
+                    Toast.makeText(getApplication(), "Bienvenido "+mail, Toast.LENGTH_SHORT).show();
+                }else{
+                    mError.setValue("Error en el login. Usuario o Contraseña incorrecto");
                 }
             }
 
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                mError.setValue("Error de red");
                 Log.d("Login", "Error de red" + t.getMessage());
-
             }
         });
     }

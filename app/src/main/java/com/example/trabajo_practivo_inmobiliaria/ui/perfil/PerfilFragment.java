@@ -1,29 +1,27 @@
-package com.example.trabajo_practivo_inmobiliaria.ui.gallery;
+package com.example.trabajo_practivo_inmobiliaria.ui.perfil;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.trabajo_practivo_inmobiliaria.MainActivity;
 import com.example.trabajo_practivo_inmobiliaria.databinding.FragmentGalleryBinding;
 import com.example.trabajo_practivo_inmobiliaria.models.Propietario;
 
-public class GalleryFragment extends Fragment {
+public class PerfilFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
-    private GalleryViewModel mv;
+    private PerfilViewModel mv;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        mv=new ViewModelProvider(this).get(GalleryViewModel.class);
+        mv=new ViewModelProvider(this).get(PerfilViewModel.class);
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mv.getmPropietario().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
@@ -51,6 +49,12 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onChanged(String s) {
                 binding.btnEditar.setText(s.toString());
+            }
+        });
+        mv.getmError().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvErrorPerfil.setText(s.toString());
             }
         });
 
