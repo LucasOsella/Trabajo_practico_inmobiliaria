@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.FontScaleConverter;
 
+import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
 import com.example.trabajo_practivo_inmobiliaria.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -45,6 +48,8 @@ public class ApiClient {
         //actualiza el perfil
         @PUT("api/Propietarios/actualizar")
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario propietario);
+        @GET("api/Inmuebles")
+        Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
     }
 
     public static InmoServicio getApiInmobiliario(){
