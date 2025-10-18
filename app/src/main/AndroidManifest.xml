@@ -13,8 +13,7 @@
         android:theme="@style/Theme.Trabajo_practivo_inmobiliaria">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBQZfsNnOFjOcIJszkqA6tX4L-FnXf_INA"
-            />
+            android:value=""/>
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
