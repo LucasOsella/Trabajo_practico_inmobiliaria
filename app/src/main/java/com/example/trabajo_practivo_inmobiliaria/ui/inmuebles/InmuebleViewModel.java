@@ -1,4 +1,4 @@
-package com.example.trabajo_practivo_inmobiliaria.ui.slideshow;
+package com.example.trabajo_practivo_inmobiliaria.ui.inmuebles;
 
 import android.app.Application;
 import android.widget.Toast;
@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
 import com.example.trabajo_practivo_inmobiliaria.request.ApiClient;
@@ -18,10 +17,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SlideshowViewModel extends AndroidViewModel {
+public class InmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Inmueble>> mInmuebles = new MutableLiveData<>();
-    public SlideshowViewModel(@NonNull Application application) {
+    public InmuebleViewModel(@NonNull Application application) {
         super(application);
         obtenerInmuebles();
     }

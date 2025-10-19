@@ -51,12 +51,6 @@ public class PerfilFragment extends Fragment {
                 binding.btnEditar.setText(s.toString());
             }
         });
-        mv.getmError().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                binding.tvErrorPerfil.setText(s.toString());
-            }
-        });
 
         mv.leerPropietario();
 
@@ -70,6 +64,13 @@ public class PerfilFragment extends Fragment {
                 email=binding.etEmailPerfil.getText().toString();
                 telefono=binding.etTelefono.getText().toString();
                 mv.boton(binding.btnEditar.getText().toString(),nombre,apellido,dni,email,telefono);
+            }
+        });
+
+        mv.getmError().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvErrorPerfil.setText(s.toString());
             }
         });
 

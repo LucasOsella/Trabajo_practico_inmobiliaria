@@ -56,35 +56,34 @@ public class PerfilViewModel extends AndroidViewModel {
             if (btn.equalsIgnoreCase("Guardar")){
                 mEstado.setValue(false);
                 mPalabra.setValue("Editar");
-            }
-            //validar campos
-            Propietario p = new Propietario();
-            p.setId(mPropietario.getValue().getId());
-            p.setApellido(apellido);
-            p.setNombre(nombre);
-            p.setDni(dni);
-            p.setEmail(email);
-            p.setTelefono(telefono);
-            p.setClave(null);
+                Propietario p = new Propietario();
+                p.setId(mPropietario.getValue().getId());
+                p.setApellido(apellido);
+                p.setNombre(nombre);
+                p.setDni(dni);
+                p.setEmail(email);
+                p.setTelefono(telefono);
+                p.setClave(null);
 
-            String token =ApiClient.leerToken(getApplication());
-            Call<Propietario> llamda= ApiClient.getApiInmobiliario().actualizarPropietario("Bearer "+token,p);
-            llamda.enqueue(new Callback<Propietario>() {
-                @Override
-                public void onResponse(Call<Propietario> call, Response<Propietario> response) {
-                    if (response.isSuccessful()){
+                String token = ApiClient.leerToken(getApplication());
+                Call<Propietario> llamda = ApiClient.getApiInmobiliario().actualizarPropietario("Bearer " + token, p);
+                llamda.enqueue(new Callback<Propietario>() {
+                    @Override
+                    public void onResponse(Call<Propietario> call, Response<Propietario> response) {
+                        if (response.isSuccessful()) {
 //                      Snackbar.make(getApplication(), "Propietario agregado con exito", Snackbar.LENGTH_SHORT).show();
-                        Toast.makeText(getApplication(), "Propietario agregado con exito", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getApplication(), "Error al guardar el propietario", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplication(), "Propietario agregado con exito", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplication(), "Error al guardar el propietario", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<Propietario> call, Throwable t) {
-                    Toast.makeText(getApplication(), "Error en el servidor", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Propietario> call, Throwable t) {
+                        Toast.makeText(getApplication(), "Error en el servidor", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
 
 
 

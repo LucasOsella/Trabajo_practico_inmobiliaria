@@ -1,4 +1,4 @@
-package com.example.trabajo_practivo_inmobiliaria.ui.slideshow;
+package com.example.trabajo_practivo_inmobiliaria.ui.inmuebles;
 
 import android.content.Context;
 import android.view.LayoutInflater;

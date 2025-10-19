@@ -1,10 +1,9 @@
-package com.example.trabajo_practivo_inmobiliaria.ui.slideshow;
+package com.example.trabajo_practivo_inmobiliaria.ui.inmuebles;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,14 +17,14 @@ import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
 
 import java.util.List;
 
-public class SlideshowFragment extends Fragment {
+public class InmuebleFragment extends Fragment {
 
     private FragmentSlideshowBinding binding;
-    private SlideshowViewModel mv;
+    private InmuebleViewModel mv;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mv= new ViewModelProvider(this).get(SlideshowViewModel.class);
+        mv= new ViewModelProvider(this).get(InmuebleViewModel.class);
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mv.getmInmuebles().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
