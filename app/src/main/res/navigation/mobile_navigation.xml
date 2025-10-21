@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.trabajo_practivo_inmobiliaria.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Ubicacion"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -21,7 +21,11 @@
         android:id="@+id/nav_slideshow"
         android:name="com.example.trabajo_practivo_inmobiliaria.ui.inmuebles.InmuebleFragment"
         android:label="Inmuebles"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_slideshow" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_detallleInmuebleFragment"
+            app:destination="@id/detallleInmuebleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/contratosFragment"
         android:name="com.example.trabajo_practivo_inmobiliaria.ui.contratos.ContratosFragment"
@@ -36,6 +40,15 @@
     <activity
         android:id="@+id/loginActivity"
         android:name="com.example.trabajo_practivo_inmobiliaria.login.LoginActivity"
-        android:label="activity_login"
+        android:label=""
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/detallleInmuebleFragment"
+        android:name="com.example.trabajo_practivo_inmobiliaria.ui.inmuebles.DetallleInmuebleFragment"
+        android:label="Detalle del Inmueble"
+        tools:layout="@layout/fragment_detallle_inmueble" >
+        <action
+            android:id="@+id/action_detallleInmuebleFragment_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
+    </fragment>
 </navigation>

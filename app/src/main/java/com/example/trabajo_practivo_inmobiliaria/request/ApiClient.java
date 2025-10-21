@@ -50,6 +50,8 @@ public class ApiClient {
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario propietario);
         @GET("api/Inmuebles")
         Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
+        @PUT("api/Inmuebles/actualizar")
+        Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body Inmueble inmueble);
     }
 
     public static InmoServicio getApiInmobiliario(){

@@ -1,6 +1,10 @@
 package com.example.trabajo_practivo_inmobiliaria.ui.inmuebles;
 
+import static com.example.trabajo_practivo_inmobiliaria.request.ApiClient.URLBASE;
+
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -27,11 +33,13 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
     public class InmuebleViewHolder extends RecyclerView.ViewHolder {
         private TextView tvDireccion, tvPrecio;
         private ImageView foto;
+        private CardView cardView;
         public InmuebleViewHolder(@NonNull View itemView) {
             super(itemView);
             tvDireccion = itemView.findViewById(R.id.tvDireccion);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             foto = itemView.findViewById(R.id.ivFotoInm);
+            cardView=itemView.findViewById(R.id.idCard);
         }
     }
 
@@ -44,15 +52,24 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.Inmueb
 
     @Override
     public void onBindViewHolder(@NonNull InmuebleAdapter.InmuebleViewHolder holder, int position) {
-        String urlBase= "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net";
+
         Inmueble inmuebleActual = inmuebles.get(position);
         holder.tvDireccion.setText(inmuebleActual.getDireccion());
         holder.tvPrecio.setText(String.valueOf(inmuebleActual.getValor()));
         Glide.with(context)
-                .load(urlBase + inmuebleActual.getImagen())
+                .load(URLBASE + inmuebleActual.getImagen())
                 .placeholder(R.drawable.inmueble)
                 .error("null")
                 .into(holder.foto);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle= new Bundle();
+                bundle.putSerializable("inmueble",inmuebleActual);
+                Navigation.findNavController((Activity) v.getContext(), R.id.nav_host_fragment_content_main)
+                .navigate(R.id.detallleInmuebleFragment,bundle);
+            }
+        });
     }
 
     @Override
