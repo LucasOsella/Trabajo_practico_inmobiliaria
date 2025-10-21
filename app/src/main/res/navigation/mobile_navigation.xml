@@ -51,4 +51,9 @@
             android:id="@+id/action_detallleInmuebleFragment_to_nav_slideshow"
             app:destination="@id/nav_slideshow" />
     </fragment>
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.example.trabajo_practivo_inmobiliaria.login.LogoutFragment"
+        android:label="Logout">
+    </fragment>
 </navigation>

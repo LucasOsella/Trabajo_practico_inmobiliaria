@@ -1,6 +1,8 @@
 package com.example.trabajo_practivo_inmobiliaria.ui.home;
 
 import android.app.Application;
+import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -8,6 +10,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.trabajo_practivo_inmobiliaria.login.LoginActivity;
+import com.example.trabajo_practivo_inmobiliaria.request.ApiClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

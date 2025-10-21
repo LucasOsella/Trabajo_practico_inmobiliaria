@@ -30,6 +30,7 @@
             android:title="Contratos"
             />
         <item
+            android:id="@id/logoutFragment"
             android:title="Logout"
             android:icon="@drawable/logout"
             />
