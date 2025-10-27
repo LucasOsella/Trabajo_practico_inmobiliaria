@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_nav_slideshow_to_detallleInmuebleFragment"
             app:destination="@id/detallleInmuebleFragment" />
+        <action
+            android:id="@+id/action_nav_slideshow_to_agregarInmuebleFragment"
+            app:destination="@id/agregarInmuebleFragment" />
     </fragment>
     <fragment
         android:id="@+id/contratosFragment"
@@ -55,5 +58,14 @@
         android:id="@+id/logoutFragment"
         android:name="com.example.trabajo_practivo_inmobiliaria.login.LogoutFragment"
         android:label="Logout">
+    </fragment>
+    <fragment
+        android:id="@+id/agregarInmuebleFragment"
+        android:name="com.example.trabajo_practivo_inmobiliaria.ui.inmuebles.AgregarInmuebleFragment"
+        android:label="fragment_agregar_inmueble"
+        tools:layout="@layout/fragment_agregar_inmueble" >
+        <action
+            android:id="@+id/action_agregarInmuebleFragment_to_nav_slideshow"
+            app:destination="@id/nav_slideshow" />
     </fragment>
 </navigation>

@@ -1,6 +1,7 @@
 package com.example.trabajo_practivo_inmobiliaria.ui.inmuebles;
 
 import android.app.Application;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;

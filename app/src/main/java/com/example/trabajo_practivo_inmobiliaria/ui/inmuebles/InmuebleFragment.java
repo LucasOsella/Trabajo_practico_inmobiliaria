@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabajo_practivo_inmobiliaria.R;
 import com.example.trabajo_practivo_inmobiliaria.databinding.FragmentSlideshowBinding;
 import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
 
@@ -37,8 +40,16 @@ public class InmuebleFragment extends Fragment {
                 recyclerView.setAdapter(inmuebleAdapter);
             }
         });
-        //mv.obtenerInmuebles();
+        mv.obtenerInmuebles();
 
+        binding.fabAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
+                navController.navigate(R.id.action_nav_slideshow_to_agregarInmuebleFragment);
+
+            }
+        });
 
         return root;
     }
