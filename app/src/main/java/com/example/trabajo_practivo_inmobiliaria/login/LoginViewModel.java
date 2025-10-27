@@ -31,7 +31,7 @@ public class LoginViewModel extends AndroidViewModel {
     }
     public void login(String mail, String clave){
         if(mail.isEmpty()||clave.isEmpty()){
-            mError.setValue("Debe completar todos los campos");
+            mError.postValue("Debe completar todos los campos");
             return;
         }
         ApiClient.InmoServicio api= ApiClient.getApiInmobiliario();
@@ -47,14 +47,14 @@ public class LoginViewModel extends AndroidViewModel {
                     getApplication().startActivity(intent);
                     Toast.makeText(getApplication(), "Bienvenido "+mail, Toast.LENGTH_SHORT).show();
                 }else{
-                    mError.setValue("Error en el login. Usuario o Contraseña incorrecto");
+                    mError.postValue("Error en el login. Usuario o Contraseña incorrecto");
                 }
             }
 
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                mError.setValue("Error de red");
+                mError.postValue("Error de red");
                 Log.d("Login", "Error de red" + t.getMessage());
             }
         });

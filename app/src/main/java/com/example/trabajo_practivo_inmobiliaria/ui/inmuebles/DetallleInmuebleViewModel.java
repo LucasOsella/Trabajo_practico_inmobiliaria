@@ -30,7 +30,7 @@ public class DetallleInmuebleViewModel extends AndroidViewModel {
      public void obetenerInbmuebles(Bundle bundle){
         Inmueble inmueble = (Inmueble) bundle.getSerializable("inmueble");
         if (inmueble != null){
-            mImueble.setValue(inmueble);
+            mImueble.postValue(inmueble);
         }else{
             Toast.makeText(getApplication(), "No se encontro el inmueble", Toast.LENGTH_SHORT).show();
         }

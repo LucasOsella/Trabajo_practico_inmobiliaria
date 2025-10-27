@@ -25,7 +25,7 @@ import java.util.function.ObjIntConsumer;
 public class LogoutFragment extends Fragment {
 
     private LogoutViewModel mViewModel;
-    private FragmentHomeBinding binding;
+//    private FragmentHomeBinding binding;
 
     public static LogoutFragment newInstance() {
         return new LogoutFragment();
@@ -35,8 +35,8 @@ public class LogoutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(LogoutViewModel.class);
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+//        binding = FragmentHomeBinding.inflate(inflater, container, false);
+//        View root = binding.getRoot();
 
         new AlertDialog.Builder(requireContext())
                 .setTitle("Confirmar salida")
@@ -50,13 +50,14 @@ public class LogoutFragment extends Fragment {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                        navController.navigate(R.id.nav_home);
                     }
                 })
 
                 .show();
 
-        return root;
+        return null;
     }
 
 }

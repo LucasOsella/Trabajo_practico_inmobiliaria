@@ -43,19 +43,19 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public void boton(String btn, String nombre,String apellido, String dni, String email, String telefono){
         if (nombre.isEmpty()||apellido.isEmpty()||dni.isEmpty()||email.isEmpty()||telefono.isEmpty()){
-            mError.setValue("Debe completar todos los campos");
+            mError.postValue("Debe completar todos los campos");
             return;
         }else {
-            mError.setValue("");
+            mError.postValue("");
         }
 
         if (btn.equalsIgnoreCase("Editar")){
-            mEstado.setValue(true);
-            mPalabra.setValue("Guardar");
+            mEstado.postValue(true);
+            mPalabra.postValue("Guardar");
         }else{
             if (btn.equalsIgnoreCase("Guardar")){
-                mEstado.setValue(false);
-                mPalabra.setValue("Editar");
+                mEstado.postValue(false);
+                mPalabra.postValue("Editar");
                 Propietario p = new Propietario();
                 p.setId(mPropietario.getValue().getId());
                 p.setApellido(apellido);

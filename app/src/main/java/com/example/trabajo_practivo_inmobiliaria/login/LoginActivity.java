@@ -9,6 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trabajo_practivo_inmobiliaria.R;
@@ -23,6 +24,12 @@ private ActivityLoginBinding binding;
         mv= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginViewModel.class);
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
+        mv.getMerror().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvError.setText(s.toString());
+            }
+        });
 
         binding.btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +37,7 @@ private ActivityLoginBinding binding;
                 String user=binding.etEmail.getText().toString();
                 String pass=binding.etContrasenia.getText().toString();
                 mv.login(user,pass);
-                binding.tvError.setText(mv.getMerror().getValue());
+//                binding.tvError.setText(mv.getMerror().getValue());
             }
         });
     }
