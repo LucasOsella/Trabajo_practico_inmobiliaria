@@ -54,7 +54,6 @@ public class ContratosViewModel extends AndroidViewModel {
                     for (Inmueble inmueble : inmuebles) {
                         Log.d("InmueblesID", "onResponse: " + inmueble.getIdInmueble() + "");
                         obtenerContratos(inmueble.getIdInmueble());
-
                     }
                 }
             }
@@ -67,21 +66,37 @@ public class ContratosViewModel extends AndroidViewModel {
         });
 
     }
+
     public void obtenerContratos(int idInmueble) {
+
         ApiClient.InmoServicio api = ApiClient.getApiInmobiliario();
         String token = ApiClient.leerToken(getApplication());
         Call<Contratos> llamada = api.obtenerContratosPorInmuebles("Bearer " + token, idInmueble);
         llamada.enqueue(new Callback<Contratos>() {
             @Override
             public void onResponse(Call<Contratos> call, Response<Contratos> response) {
+                boolean yaExiste = false;
                 if (response.isSuccessful()) {
-                    List<Contratos> listaActual = mContratos.getValue();
-                    //tenia un problema y la ia me recomendo esto y funciono.
-                    if (listaActual == null) listaActual = new ArrayList<>();
-                    listaActual.add(response.body());
-                    mContratos.postValue(listaActual);
-                }
-                else {
+                    Contratos nuevoContrato = response.body();
+                    if (nuevoContrato != null) {
+                        List<Contratos> listaActual = mContratos.getValue();
+                        if (listaActual == null) {
+                            listaActual = new ArrayList<>();
+                        }
+
+                        for (Contratos c : listaActual) {
+                            if (c.getIdContrato() == nuevoContrato.getIdContrato()) {
+                                yaExiste = true;
+                                break;
+                            }
+                        }
+
+                        if (!yaExiste) {
+                            listaActual.add(nuevoContrato);
+                            mContratos.postValue(listaActual);
+                        }
+                    }
+                } else {
                     Toast.makeText(getApplication(), "No se pudo obtener los contratos", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -93,5 +108,6 @@ public class ContratosViewModel extends AndroidViewModel {
         });
 
     }
+
 
 }

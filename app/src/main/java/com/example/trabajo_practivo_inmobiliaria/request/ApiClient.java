@@ -6,6 +6,7 @@ import android.content.res.FontScaleConverter;
 
 import com.example.trabajo_practivo_inmobiliaria.models.Contratos;
 import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
+import com.example.trabajo_practivo_inmobiliaria.models.Pagos;
 import com.example.trabajo_practivo_inmobiliaria.models.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,6 +72,10 @@ public class ApiClient {
         //Contratos
         @GET("api/contratos/inmueble/{id}")
         Call<Contratos> obtenerContratosPorInmuebles(@Header("Authorization") String token, @Path("id") int id);
+
+        //Pagos
+        @GET("api/pagos/contrato/{id}")
+        Call<List<Pagos>> obtenerPagosPorContrato(@Header("Authorization") String token, @Path("id") int id);
     }
 
     public static InmoServicio getApiInmobiliario(){

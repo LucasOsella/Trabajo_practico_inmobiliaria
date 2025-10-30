@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="12dp"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Detalle del Contrato"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Código del Contrato -->
+            <TextView
+                android:id="@+id/tvCodigoContratoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Código:"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCodigoContrato"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="12345"
+                app:layout_constraintTop_toTopOf="@id/tvCodigoContratoLabel"
+                app:layout_constraintStart_toEndOf="@id/tvCodigoContratoLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Fecha Inicio -->
+            <TextView
+                android:id="@+id/tvFechaInicioLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha Inicio:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvCodigoContratoLabel"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFechaInicio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="01/01/2025"
+                app:layout_constraintTop_toTopOf="@id/tvFechaInicioLabel"
+                app:layout_constraintStart_toEndOf="@id/tvFechaInicioLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Fecha Fin -->
+            <TextView
+                android:id="@+id/tvFechaFinLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha Fin:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvFechaInicioLabel"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFechaFin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="01/01/2026"
+                app:layout_constraintTop_toTopOf="@id/tvFechaFinLabel"
+                app:layout_constraintStart_toEndOf="@id/tvFechaFinLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Monto -->
+            <TextView
+                android:id="@+id/tvMontoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monto:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvFechaFinLabel"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvMonto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="$100.000"
+                app:layout_constraintTop_toTopOf="@id/tvMontoLabel"
+                app:layout_constraintStart_toEndOf="@id/tvMontoLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Inquilino -->
+            <TextView
+                android:id="@+id/tvInquilinoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inquilino:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvMontoLabel"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvInquilino"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Juan Pérez"
+                app:layout_constraintTop_toTopOf="@id/tvInquilinoLabel"
+                app:layout_constraintStart_toEndOf="@id/tvInquilinoLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Inmueble -->
+            <TextView
+                android:id="@+id/tvInmuebleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inmueble:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tvInquilinoLabel"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvInmueble"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Casa - Calle Falsa 123"
+                app:layout_constraintTop_toTopOf="@id/tvInmuebleLabel"
+                app:layout_constraintStart_toEndOf="@id/tvInmuebleLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="8dp" />
+
+            <!-- Botón Pagos -->
+            <Button
+                android:id="@+id/btnPagos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Ver Pagos"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tvInmuebleLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>

@@ -213,25 +213,10 @@
         android:layout_width="275dp"
         android:layout_height="210dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/btEditarInmueble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkDisponible"
         tools:src="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/btEditarInmueble"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#6200EE"
-        android:text="Editar"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgInmuebleD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

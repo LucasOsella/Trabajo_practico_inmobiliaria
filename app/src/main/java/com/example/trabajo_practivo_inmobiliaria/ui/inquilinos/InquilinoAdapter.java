@@ -1,4 +1,4 @@
-package com.example.trabajo_practivo_inmobiliaria.ui.contratos;
+package com.example.trabajo_practivo_inmobiliaria.ui.inquilinos;
 
 import static com.example.trabajo_practivo_inmobiliaria.request.ApiClient.URLBASE;
 
@@ -18,66 +18,67 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.trabajo_practivo_inmobiliaria.R;
-import com.example.trabajo_practivo_inmobiliaria.models.*;
+import com.example.trabajo_practivo_inmobiliaria.models.Inmueble;
 import com.example.trabajo_practivo_inmobiliaria.ui.inmuebles.InmuebleAdapter;
 
-import java.util.*;
+import java.util.List;
 
-public class ContratosAdapter extends RecyclerView.Adapter<ContratosAdapter.ContratosViewHolder> {
-
-    private List<Contratos> contratos;
+public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.ViewHolderInquilino> {
+    private List<Inmueble> inmuebles;
     private Context context;
 
-
-    public ContratosAdapter(List<Contratos> contratos, Context context) {
-        this.contratos = contratos;
+    public InquilinoAdapter(List<Inmueble> inmuebles, Context context) {
+        this.inmuebles = inmuebles;
         this.context = context;
     }
-    public class ContratosViewHolder extends RecyclerView.ViewHolder {
+
+    public class ViewHolderInquilino extends RecyclerView.ViewHolder {
         private TextView tvDireccion;
         private ImageView foto;
         private CardView cardView;
 
-        public ContratosViewHolder(@NonNull View itemView) {
+        public ViewHolderInquilino(View itemView) {
             super(itemView);
             tvDireccion = itemView.findViewById(R.id.tvDireccion);
             foto = itemView.findViewById(R.id.ivFotoInm);
-            cardView = itemView.findViewById(R.id.idCardContrato);
+            cardView=itemView.findViewById(R.id.idCardContrato);
+
         }
     }
-
     @NonNull
     @Override
-    public ContratosViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public InquilinoAdapter.ViewHolderInquilino onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contrato_cardview, parent, false);
-        return new ContratosAdapter.ContratosViewHolder(view);
+        return new InquilinoAdapter.ViewHolderInquilino(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContratosViewHolder holder, int position) {
-        Contratos contratoActual = contratos.get(position);
-        holder.tvDireccion.setText(contratoActual.getInmueble().getDireccion());
+    public void onBindViewHolder(@NonNull ViewHolderInquilino holder, int position) {
+        Inmueble inmuebleActual = inmuebles.get(position);
+        holder.tvDireccion.setText(inmuebleActual.getDireccion());
         Glide.with(context)
-                .load(URLBASE + contratoActual.getInmueble().getImagen())
+                .load(URLBASE + inmuebleActual.getImagen())
+                .placeholder(R.drawable.inmueble)
+                .error("null")
+                .into(holder.foto);
+        Glide.with(context)
+                .load(URLBASE + inmuebleActual.getImagen())
                 .placeholder(R.drawable.inmueble)
                 .error("null")
                 .into(holder.foto);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("contrato", contratoActual);
+                Bundle bundle= new Bundle();
+                bundle.putSerializable("inmuebleID",inmuebleActual.getIdInmueble());
                 Navigation.findNavController((Activity) v.getContext(), R.id.nav_host_fragment_content_main)
-                        .navigate(R.id.detalleContratosFragment, bundle);
+                        .navigate(R.id.detalleInquilinoFragment,bundle);
             }
         });
-
     }
-
 
     @Override
     public int getItemCount() {
-        return contratos.size();
+        return inmuebles.size();
     }
 }
-
