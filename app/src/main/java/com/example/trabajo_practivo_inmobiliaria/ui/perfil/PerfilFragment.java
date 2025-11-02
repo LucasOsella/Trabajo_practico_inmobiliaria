@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.trabajo_practivo_inmobiliaria.R;
 import com.example.trabajo_practivo_inmobiliaria.databinding.FragmentGalleryBinding;
 import com.example.trabajo_practivo_inmobiliaria.models.Propietario;
 
@@ -71,6 +73,13 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onChanged(String s) {
                 binding.tvErrorPerfil.setText(s.toString());
+            }
+        });
+
+        binding.btnCambiarContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_gallery_to_cambiarContraseniaFragment);
             }
         });
 

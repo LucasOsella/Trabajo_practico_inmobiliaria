@@ -15,7 +15,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.trabajo_practivo_inmobiliaria.ui.perfil.PerfilFragment"
         android:label="Perfil"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_cambiarContraseniaFragment"
+            app:destination="@id/cambiarContraseniaFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -104,5 +108,14 @@
         <action
             android:id="@+id/action_detalleInquilinoFragment_to_inquilinosFragment"
             app:destination="@id/inquilinosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cambiarContraseniaFragment"
+        android:name="com.example.trabajo_practivo_inmobiliaria.ui.perfil.CambiarContraseniaFragment"
+        android:label="fragment_cambiar_contrasenia"
+        tools:layout="@layout/fragment_cambiar_contrasenia" >
+        <action
+            android:id="@+id/action_cambiarContraseniaFragment_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
     </fragment>
 </navigation>

@@ -55,6 +55,10 @@ public class ApiClient {
         //actualiza el perfil
         @PUT("api/Propietarios/actualizar")
         Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario propietario);
+        //Actualizar Contraseña
+        @FormUrlEncoded
+        @PUT("api/Propietarios/changePassword")
+        Call<Propietario> actualizarContraseña(@Header("Authorization") String token, @Field("currentPassword") String claveActual, @Field("newPassword") String nuevaClave);
 
         //Inmuebles
         @GET("api/Inmuebles")
