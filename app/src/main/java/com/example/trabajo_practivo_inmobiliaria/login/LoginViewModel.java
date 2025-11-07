@@ -22,12 +22,18 @@ import retrofit2.Response;
 
 public class LoginViewModel extends AndroidViewModel {
     private MutableLiveData <String> mError = new MutableLiveData<>();
+
+    private final MutableLiveData<String> abrirLlamada = new MutableLiveData<>();
+
     public LoginViewModel(@NonNull Application application) {
         super(application);
     }
 
     public LiveData<String> getMerror(){
         return mError;
+    }
+    public LiveData<String> getAbrirLlamada() {
+        return abrirLlamada;
     }
     public void login(String mail, String clave){
         if(mail.isEmpty()||clave.isEmpty()){
@@ -58,5 +64,9 @@ public class LoginViewModel extends AndroidViewModel {
                 Log.d("Login", "Error de red" + t.getMessage());
             }
         });
+    }
+    public void onShakeDetected() {
+        String numero = "2664000000"; // Número que quieras marcar
+        abrirLlamada.setValue(numero);
     }
 }
